@@ -29,4 +29,4 @@ for x in listz:
     if 0 > x > maks:
         maks = x
 print('Max:', maks)
-
+#komentarz

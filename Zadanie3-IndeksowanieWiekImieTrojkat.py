@@ -33,3 +33,4 @@ h = float(input('Podaj wysokość'))
 print('Pole trójkąta:', a*h/2)
 
 input('Naciśnij enter, aby zakończyć program')
+# Filip Kozlowski
