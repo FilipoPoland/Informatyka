@@ -3,38 +3,30 @@ from random import shuffle
 
 def plansza(stan):
     a = 0
-    for i1 in range(3):
-        for i2 in range(3):
+    for j in range(3):
+        for i in range(3):
             print('+', 3*'-', sep='', end='')
         print('+')
-        for i2 in range(3):
-            print('|', ' ', stan[a], ' ', sep='', end='')
+        for i in range(3):
+            print('|',' ', stan[a], ' ', sep='', end='')
             a += 1
         print('|')
-
-    for i3 in range(3):
+    for i in range(3):
         print('+', 3*'-', sep='', end='')
     print('+')
 
 
-def sprawdz(getiteam, getiteam2):
-    if getiteam[0] == getiteam[1] == getiteam[2]:
-        return False
-    elif getiteam[3] == getiteam[4] == getiteam[5]:
-        return False
-    elif getiteam[6] == getiteam[7] == getiteam[8]:
-        return False
-    elif getiteam[0] == getiteam[4] == getiteam[8]:
-        return False
-    elif getiteam[2] == getiteam[4] == getiteam[6]:
-        return False
-    elif not getiteam2:
-        return False
-    else:
+def sprawdz(lista):
+    if list[0] == lista[1] == lista[2]:
         return True
+    if list[3] == lista[4] == lista[5]:
+        return True
+    if list[6] == lista[7] == lista[8]:
+        return True
+    return False
 
 
-lista = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+lista = [' '] * 9
 print(lista)
 
 lista2 = []
@@ -49,13 +41,10 @@ while x:
     los = lista2[0]
     del(lista2[0])
     print(los)
-    lista[los] = 'O'
+    lista[los] = 'o'
     plansza(lista)
-    x = sprawdz(lista, lista2)
 
     user = int(input('Podaj pole: '))
     lista[user] = 'X'
     lista2.remove(user)
     plansza(lista)
-
-    x = sprawdz(lista, lista2)
