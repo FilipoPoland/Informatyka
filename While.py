@@ -41,8 +41,8 @@ def trapezpole():
 ticker = 0
 import While_ad
 
-l_user(l_user)
-l_pass()
+While_ad.l_user()
+While_ad.l_pass()
 
 end = True
 while end:
