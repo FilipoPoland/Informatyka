@@ -39,7 +39,10 @@ def trapezpole():
 
 # zdefiniowanie wstepnych zmiennych
 ticker = 0
-import
+import While_ad
+
+l_user(l_user)
+l_pass()
 
 end = True
 while end:
