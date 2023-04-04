@@ -89,7 +89,6 @@ while x:
     los = list2[0]
     del(list2[0])
     list1[los] = 0
-    y = 1
     plansza(list1)
     x = sprawdz(list1, zwyciestwo, list2)
     if x:
@@ -99,5 +98,4 @@ while x:
         list2.remove(user)
         x = sprawdz(list1, zwyciestwo, list2)
 
-
-print(zwyciestwo[0])
+print(plansza(list1), '\n', zwyciestwo[0])
