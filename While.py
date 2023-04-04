@@ -8,13 +8,13 @@ def chec():
         return False
 
 
-def help():
+def pomoc():
     print('Aby wyświetlić uśmiechniętą minkę wpisz: uśmiech.\n'
           'Aby wyświetlić smutną minkę wpisz: smutek.\n'
           'Aby wyświetlić prostokąt wpisz: prostokat.\n'
           # 'Aby wyświetlić trapez prostokątny wpisz: trapez.\n'
           'Aby obliczyć pole trapezu wpisz: trapez pole.\n'
-          'Aby wyświetlić komendy wpisz: help.\n'
+          'Aby wyświetlić komendy wpisz: pomoc.\n'
           'Aby się wylogować wpisz: logout.')
 
 
@@ -37,24 +37,37 @@ def trapezpole():
     print((a + b) / 2 * h)
 
 
-l_user = ['admin']
-l_pass = ['admin']
+# zdefiniowanie wstepnych zmiennych
+ticker = 0
+import
 
-while chec():
-    nu = input('Czy jesteś istniejącym użtkownikiem? (t/n)')
+end = True
+while end:
+    end = chec()
+    # zapyttanie uzytkownika czy ma juz konto
+    nu = input('Czy jesteś istniejącym użytkownikiem? (t/n)')
+    # zdefiniowanie nowego konta
     if nu == 'n':
+        # zdefiniowanie nowego loginu
         l_user.append(input('Podaj nazwę użytkownika: '))
+        # zdefiniowanie hasla do nowego konta
         l_pass.append(input('Podaj hasło do konta: '))
 
+    # wyswietlenie ilosci poprzednich podejsc
+    print(f'Podejście {ticker}.')
+    # zapytanie uzytkownika o login
     login = input('Podaj login: ')
-    haslo = input('Podaj hasło: ')
 
+    # sprawdzenie loginu
     if login in l_user:
         index = l_user.index(login)
+        haslo = input('Podaj hasło: ')
+        # sprawdzenie prawdziwosci hasla
         if haslo in l_pass[index]:
             logged = True
             print('Poprawne logowanie')
-            help()
+            pomoc()
+            # podczas bycia zalogowanym beda dostepne komendy opisane wewnatrz funkcji while
             while logged:
                 komenda = input('Komenda: ')
                 if komenda == 'uśmiech':
@@ -63,14 +76,20 @@ while chec():
                     print(':(')
                 if komenda == 'prostokat':
                     prostokat()
-                # if komenda == 'trapez':
-                #     trapez()
                 if komenda == 'trapez pole':
                     trapezpole()
+                if komenda == 'pomoc':
+                    pomoc()
                 if komenda == 'logout':
                     logged = False
                     print('Zostałeś wylogowany.')
-    elif login in l_user:
-        print('Błedne hasło.')
+                if komenda == 'wyjdz':
+                    end = False
+        else:
+            print('Błędne hasło.')
+            ticker += 1
+    elif ticker > 4:
+        end = False
     else:
         print('Błędny login.')
+        ticker += 1
