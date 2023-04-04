@@ -42,6 +42,7 @@ ticker = 0
 import While_ad
 
 While_ad.l_user()
+
 While_ad.l_pass()
 
 end = True
@@ -52,9 +53,9 @@ while end:
     # zdefiniowanie nowego konta
     if nu == 'n':
         # zdefiniowanie nowego loginu
-        l_user.append(input('Podaj nazwę użytkownika: '))
+        While_ad.l_user().append(input('Podaj nazwę użytkownika: '))
         # zdefiniowanie hasla do nowego konta
-        l_pass.append(input('Podaj hasło do konta: '))
+        While_ad.l_pass().append(input('Podaj hasło do konta: '))
 
     # wyswietlenie ilosci poprzednich podejsc
     print(f'Podejście {ticker}.')
