@@ -87,12 +87,20 @@ x = sprawdz(list1, zwyciestwo, list2)
 while x:
     shuffle(list2)
     los = list2[0]
-    del(list2[0])
+    del (list2[0])
     list1[los] = 0
     plansza(list1)
     x = sprawdz(list1, zwyciestwo, list2)
     if x:
-        user = int(input('Podaj pole(zakres 1-9): '))
+        y = True
+        while y:
+            try:
+                user = int(input('Podaj pole(zakres 1-9): '))
+                if user < 9:
+                    y = False
+            except:
+                print('Została podana nie poprawna wartość.')
+
         user -= 1
         list1[user] = 'X'
         list2.remove(user)
