@@ -1,6 +1,13 @@
 # program tworzenia wpisów do dziennika
 import datetime
 from Database_logs import list_category, list_date, list_entry
+from itertools import islice
+
+
+def nth_index(iterable, value, n):
+    matches = (idx for idx, val in enumerate(iterable) if val == value)
+    return next(islice(matches, n-1, n), None)
+
 
 print('Dziennik: ')
 condition = True
@@ -13,7 +20,8 @@ while condition3:
             # adding the category to the list
             list_category.append(category)
             # assign date
-            list_date.append(datetime.datetime.now())
+            curenttimendate = datetime.datetime.now()
+            list_date.append(curenttimendate)
             # asking the user for his/her log entry
             entry = input('Podaj swój wpis: ')
             # appending list entry
@@ -21,8 +29,10 @@ while condition3:
             # save all lists
 
         elif intent == 'n':
-            with open('Database_logs', 'w') as file:
-                file.write('list_date = ' + str(list_date) + '\n' + 'list_category = ' + str(list_category) + '\n' +
+            with open('Database_logs.py', 'w') as file:
+                file.write('import datetime' + '\n' +
+                           'list_date = ' + str(list_date) + '\n' +
+                           'list_category = ' + str(list_category) + '\n' +
                            'list_entry = ' + str(list_entry) + '\n')
             condition = False
 
@@ -36,22 +46,18 @@ while condition3:
             condition3 = False
             q1 = False
 
-    display = input('Czy wyświetlić wpisy dziennika?(t/n)')
     condition2 = True
     while condition2:
-        from Database_logs import list_category, list_date, list_entry
+        display = input('Czy wyświetlić wpisy dziennika?(t/n)')
         if display == 't':
             kategoria = input('Podaj kategorię wpisu lub wpisz: wszystkie')
             if kategoria == 'wszystkie':
                 for i in range(len(list_date)):
-                    print('', list_date[0+i], list_category[0+i], list_entry[0+i], sep='\n')
+                    print(list_date[0+i], list_category[0+i], list_entry[0+i], sep='\n')
                     condition2 = False
             elif kategoria not in list_category:
                 print('Kategorii nie ma w bazie danych.')
                 contition2 = True
             elif kategoria in list_category:
-                print(list_category.index(kategoria))
-                for i in range(list_category.count(kategoria)):
-                    ind2 = list_category.index(kategoria)
-                    print('', list_date[ind2], list_category[ind2], list_entry[ind2], sep='\n')
-                    condition2 = False
+                idx = nth_index(list_category, kategoria, 'n')
+                print(list_date[idx], list_category[idx], list_entry[idx], sep='\n')
