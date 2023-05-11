@@ -13,19 +13,22 @@ def los(getiteam1, getiteam2, getiteam3):
     return list_los
 
 
-list_los = los(100000, -100000, 100000)
-list_los = str(list_los)
-
-list_los = list_los.replace('[', '')
-list_los = list_los.replace(']', '')
-list_los = list_los.replace(',', '\n')
-list_los = list_los.replace(' ', '')
-
-with open('Data.txt', 'w') as file:
-    file.write(list_los)
+# list_los = los(100000, -100000, 100000)
+# list_los = str(list_los)
+#
+# list_los = list_los.replace('[', '')
+# list_los = list_los.replace(']', '')
+# list_los = list_los.replace(',', '\n')
+# list_los = list_los.replace(' ', '')
+#
+# with open('Data.txt', 'w') as file:
+#     file.write(list_los)
 
 u_input = input('Podaj szukaną liczbę: ')
 
 with open('Data.txt', 'r') as file:
-    if u_input in file.readlines():
-        print('W pliku znajduje się podana liczba.')
+    for line in range(100000):
+        linijka = str(file.readline())
+        linijka = linijka.replace('\n', '')
+        if u_input == linijka:
+            print(f'Podana wartość znajduje się w lini: {line + 1}')
