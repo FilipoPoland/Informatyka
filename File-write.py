@@ -13,16 +13,16 @@ def los(getiteam1, getiteam2, getiteam3):
     return list_los
 
 
-# list_los = los(100000, -100000, 100000)
-# list_los = str(list_los)
-#
-# list_los = list_los.replace('[', '')
-# list_los = list_los.replace(']', '')
-# list_los = list_los.replace(',', '\n')
-# list_los = list_los.replace(' ', '')
-#
-# with open('Data.txt', 'w') as file:
-#     file.write(list_los)
+list_los = los(100000, -100000, 100000)
+list_los = str(list_los)
+
+list_los = list_los.replace('[', '')
+list_los = list_los.replace(']', '')
+list_los = list_los.replace(',', '\n')
+list_los = list_los.replace(' ', '')
+
+with open('Data.txt', 'w') as file:
+    file.write(list_los)
 
 u_input = input('Podaj szukaną liczbę: ')
 
